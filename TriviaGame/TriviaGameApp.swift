@@ -12,6 +12,8 @@ struct TriviaGameApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(TriviaManager())
         }
+        .modelContainer(for: [Score.self]) // Register the Score model for persistence
     }
 }

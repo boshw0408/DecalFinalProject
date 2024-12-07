@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import SwiftData
 
 class TriviaManager: ObservableObject {
     // Variables to set trivia and length of trivia
@@ -21,7 +22,7 @@ class TriviaManager: ObservableObject {
     // Variables for score and progress
     @Published private(set) var score = 0
     @Published private(set) var progress: CGFloat = 0.00
-    
+      
     // Variables to know if an answer has been selected and reached the end of trivia
     @Published private(set) var answerSelected = false
     @Published private(set) var reachedEnd = false
@@ -99,6 +100,17 @@ class TriviaManager: ObservableObject {
         if answer.isCorrect {
             score += 1
         }
+    }
+    
+    // Funtion for addressing favorite (Save, Select)
+    func saveScore(modelContext: ModelContext) {
+            let newScore = Score(value: score)
+            modelContext.insert(newScore)
+        }
+        
+    func favoriteCurrentScore(modelContext: ModelContext) {
+        let favoriteScore = Score(value: score, isFavorite: true)
+        modelContext.insert(favoriteScore)
     }
 }
 

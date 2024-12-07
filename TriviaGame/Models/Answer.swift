@@ -12,3 +12,4 @@ struct Answer: Identifiable {
     var text: AttributedString
     var isCorrect: Bool
 }
+

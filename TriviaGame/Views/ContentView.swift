@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject var triviaManager = TriviaManager()
+    @State private var showFavoriteList = false // State to show the favorite scores view
     
     var body: some View {
         NavigationView {
@@ -21,11 +22,29 @@ struct ContentView: View {
                         .foregroundColor(Color("AccentColor"))
                 }
                 
+                // Navigation Link to Trivia Game
                 NavigationLink {
                     TriviaView()
                         .environmentObject(triviaManager)
                 } label: {
                     PrimaryButton(text: "Let's go!")
+                }
+                
+                // Button to show Favorite Scores
+                Button(action: {
+                    showFavoriteList = true
+                }) {
+                    Text("View Favorite Scores")
+                        .fontWeight(.bold)
+                        .foregroundColor(.white)
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(Color.blue)
+                        .cornerRadius(8)
+                }
+                .padding(.horizontal)
+                .sheet(isPresented: $showFavoriteList) {
+                    FavoritesView()
                 }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
