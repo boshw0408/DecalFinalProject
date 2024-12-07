@@ -1,58 +1,64 @@
 //
-//  Trivia.swift
+//  ResultView.swift
 //  TriviaGame
 //
-//  Created by Stephanie Diep on 2021-12-20.
+//  Created by ccheck on 12/6/24.
 //
 
 import Foundation
 
-struct Trivia: Decodable {
-    var results: [Result]
-    
-    struct Result: Decodable, Identifiable {
-        // We need to set the ID inside of the closure, because the API doesn' return us an ID for each result
-        var id: UUID {
-            UUID()
-        }
-        var category: String
-        var type: String
-        var difficulty: String
-        var question: String
-        var correctAnswer: String
-        var incorrectAnswers: [String]
-        
-        // Custom coding key, not included in the API response, so we need to set it inside the closure
-        var formattedQuestion: AttributedString {
-            do {
-                // Formatting the question with AttributedString, because API might return some markdown text - which will be hard to read if we keep the string as is
-                return try AttributedString(markdown: question)
-            } catch {
-                // If we run into an error, return an empty string
-                print("Error setting formattedQuestion: \(error)")
-                return ""
-            }
-        }
-        // Custom coding key, not included in the API response, so we need to set it inside the closure
-
-        var answers: [Answer] {
-            do {
-                // Formatting all answer strings into AttributedStrings and creating an instance of Answer for each
-                let correct = [Answer(text: try AttributedString(markdown: correctAnswer), isCorrect: true)]
-                let incorrects = try incorrectAnswers.map { answer in
-                    Answer(text: try AttributedString(markdown: answer), isCorrect: false)
-                }
-                
-                // Merging the correct and incorrect arrays together
-                let allAnswers = correct + incorrects
-                
-                // Shuffling the answers so the correct answer isn't always the first answer of the array
-                return allAnswers.shuffled()
-            } catch {
-                // If we run into an error, return an empty array
-                print("Error setting answers: \(error)")
-                return []
-            }
-        }
+struct TriviaModel {
+    struct Question {
+        let question: String
+        let answers: [Answer]
     }
+    
+    struct Answer {
+        let text: String
+        let outcomeType: Int    // 0: E,I / 1: S,N / 2: T,F / 3: P,J
+        let outcomeIndex: Int   // 0 or 1
+    }
+    
+    let questions: [Question]
+    private(set) var outcomeCounts: [Int: [Int]]
+    
+    init(questions: [Question])
+    {
+        self.questions = questions
+        self.outcomeCounts = [
+        0: [0, 0], // E: 0, I: 1
+        1: [0, 0], // S: 0, N: 1
+        2: [0, 0], // T: 0, F: 1
+        3: [0, 0]  // P: 0, J: 1
+    ]
+    }
+    
+    mutating func recordAnswer(_ answer: Answer)
+    {
+        outcomeCounts[answer.outcomeType]?[answer.outcomeIndex] += 1
+    }
+    
+    // Calculates the final result as a 4-letter personality type
+        func calculateResult() -> String {
+            let resultBits = outcomeCounts.keys.sorted().map { type -> Int in
+                let counts = outcomeCounts[type] ?? [0, 0]
+                return counts[0] > counts[1] ? 0 : 1
+            }
+
+            // Convert result bits to personality type
+            return resultBits.enumerated().map { (index, bit) in
+                switch (index, bit) {
+                case (0, 0): return "E"
+                case (0, 1): return "I"
+                case (1, 0): return "S"
+                case (1, 1): return "N"
+                case (2, 0): return "T"
+                case (2, 1): return "F"
+                case (3, 0): return "P"
+                case (3, 1): return "J"
+                default: return ""
+                }
+            }.joined()
+        }
+    
 }

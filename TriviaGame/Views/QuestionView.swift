@@ -1,8 +1,8 @@
 //
-//  QuestionView.swift
+//  ResultView.swift
 //  TriviaGame
 //
-//  Created by Stephanie Diep on 2021-12-17.
+//  Created by ccheck on 12/6/24.
 //
 
 import SwiftUI
@@ -18,7 +18,7 @@ struct QuestionView: View {
                 
                 Spacer()
                 
-                Text("\(triviaManager.index + 1) out of \(triviaManager.length)")
+                Text("out")
                     .foregroundColor(Color("AccentColor"))
                     .fontWeight(.heavy)
             }

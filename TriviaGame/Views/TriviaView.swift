@@ -2,7 +2,7 @@
 //  TriviaView.swift
 //  TriviaGame
 //
-//  Created by Stephanie Diep on 2021-12-17.
+//  Created by ccheck on 12/6/24.
 //
 
 import SwiftUI
@@ -14,24 +14,32 @@ struct TriviaView: View {
         if triviaManager.reachedEnd {
             VStack(spacing: 20) {
                 Text("Trivia Game")
-                    .lilacTitle()
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                    .foregroundColor(Color("AccentColor"))
 
                 Text("Congratulations, you completed the game! 🥳")
-                
-                Text("You scored \(triviaManager.score) out of \(triviaManager.length)")
-                
+                    .multilineTextAlignment(.center)
+
+                if let result = triviaManager.finalResult {
+                    Text("Your personality type is:")
+                        .font(.title2)
+                        .foregroundColor(.gray)
+                    Text(result)
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                        .foregroundColor(Color("AccentColor"))
+                }
+
                 Button {
-                    Task.init {
-                        await triviaManager.fetchTrivia()
-                    }
+                    triviaManager.restartQuiz()
                 } label: {
-                    PrimaryButton(text: "Play again")
+                    PrimaryButton(text: "Play Again")
                 }
             }
-            .foregroundColor(Color("AccentColor"))
             .padding()
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(Color(red: 0.984313725490196, green: 0.9294117647058824, blue: 0.8470588235294118))
+            .background(Color(red: 0.984, green: 0.929, blue: 0.847))
         } else {
             QuestionView()
                 .environmentObject(triviaManager)

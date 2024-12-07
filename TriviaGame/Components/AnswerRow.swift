@@ -1,47 +1,38 @@
 //
-//  AnswerRow.swift
+//  ResultView.swift
 //  TriviaGame
 //
-//  Created by Stephanie Diep on 2021-12-17.
+//  Created by ccheck on 12/6/24.
 //
 
 import SwiftUI
 
 struct AnswerRow: View {
     @EnvironmentObject var triviaManager: TriviaManager
-    var answer: Answer
+    var answer: TriviaModel.Answer
     @State private var isSelected = false
 
-    // Custom colors
-    var green = Color(hue: 0.437, saturation: 0.711, brightness: 0.711)
-    var red = Color(red: 0.71, green: 0.094, blue: 0.1)
-    
     var body: some View {
         HStack(spacing: 20) {
-            Image(systemName: "circle.fill")
+            Image(systemName: isSelected ? "checkmark.circle.fill" : "circle.fill")
                 .font(.caption)
-            
+                .foregroundColor(isSelected ? Color("AccentColor") : .gray)
+
             Text(answer.text)
                 .bold()
+                .foregroundColor(isSelected ? Color("AccentColor") : .black)
+            Spacer()
             
-            if isSelected {
-                Spacer()
-                
-                Image(systemName: answer.isCorrect ? "checkmark.circle.fill" : "x.circle.fill")
-                    .foregroundColor(answer.isCorrect ? green : red)
-            }
         }
         .padding()
         .frame(maxWidth: .infinity, alignment: .leading)
-        .foregroundColor(triviaManager.answerSelected ? (isSelected ? Color("AccentColor") : .gray) : Color("AccentColor"))
-        .background(.white)
+        .background(isSelected ? Color("AccentColor").opacity(0.2) : .white)
         .cornerRadius(10)
-        .shadow(color: isSelected ? answer.isCorrect ? green : red : .gray, radius: 5, x: 0.5, y: 0.5)
+        .shadow(color: .gray, radius: 5, x: 0.5, y: 0.5)
         .onTapGesture {
             if !triviaManager.answerSelected {
                 isSelected = true
                 triviaManager.selectAnswer(answer: answer)
-
             }
         }
     }
@@ -49,7 +40,8 @@ struct AnswerRow: View {
 
 struct AnswerRow_Previews: PreviewProvider {
     static var previews: some View {
-        AnswerRow(answer: Answer(text: "Single", isCorrect:  false))
-            .environmentObject(TriviaManager())
+        AnswerRow(
+            answer: TriviaModel.Answer(text: "Staying in", outcomeType: 0, outcomeIndex: 1)
+        ).environmentObject(TriviaManager())
     }
 }
