@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct TriviaGameApp: App {
@@ -15,7 +16,8 @@ struct TriviaGameApp: App {
                 StartView()
                     .environmentObject(TriviaManager())
             }
-            .navigationViewStyle(StackNavigationViewStyle()) // For consistent navigation 
+            .navigationViewStyle(StackNavigationViewStyle()) // For consistent navigation
+            .modelContainer(for: [Favorite.self]) // Register the SwiftData model
         }
     }
 }

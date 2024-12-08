@@ -1,7 +1,9 @@
 import SwiftUI
+import SwiftData
 
 struct TriviaView: View {
     @EnvironmentObject var triviaManager: TriviaManager
+    @Environment(\.modelContext) private var modelContext
 
     var body: some View {
         VStack(spacing: 20) {
@@ -31,6 +33,24 @@ struct TriviaView: View {
                         .font(.body)
                         .padding()
                         .multilineTextAlignment(.center)
+                    
+                    HStack {
+                        Button("Add to Favorites") {
+                            addToFavorites(result)
+                        }
+                        .padding()
+                        .background(Color(red: 0.768, green: 0.655, blue: 0.905))
+                        .foregroundColor(.white)
+                        .cornerRadius(10)
+
+                        NavigationLink(destination: FavoritesView()) {
+                            Text("View Favorites")
+                                .padding()
+                                .background(Color(red: 0.659, green: 0.835, blue: 0.729))
+                                .foregroundColor(.white)
+                                .cornerRadius(10)
+                        }
+                    }
                 }
 
                 Spacer()
@@ -90,6 +110,12 @@ struct TriviaView: View {
         .background(Color(red: 0.984, green: 0.929, blue: 0.847))
         .navigationBarHidden(true)
     }
+    
+    // Function to add to favorite
+    func addToFavorites(_ result: String) {
+            let favorite = Favorite(result: result)
+            modelContext.insert(favorite)
+        }
 
     // Function to return the image name for a result
     func getImageName(for result: String) -> String {

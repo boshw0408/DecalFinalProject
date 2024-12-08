@@ -35,6 +35,8 @@
 		54685A452D064183006CC01A /* TaroMilkTea.png in Resources */ = {isa = PBXBuildFile; fileRef = 54685A352D064183006CC01A /* TaroMilkTea.png */; };
 		54685A462D064183006CC01A /* MilkGreenTea.png in Resources */ = {isa = PBXBuildFile; fileRef = 54685A2E2D064183006CC01A /* MilkGreenTea.png */; };
 		54685A472D064183006CC01A /* CaramelMilkTea.png in Resources */ = {isa = PBXBuildFile; fileRef = 54685A282D064183006CC01A /* CaramelMilkTea.png */; };
+		9F5666462D06569700EFE847 /* Favorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5666452D06569400EFE847 /* Favorite.swift */; };
+		9F5666482D06575B00EFE847 /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5666472D06575600EFE847 /* FavoritesView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,6 +69,8 @@
 		54685A342D064183006CC01A /* StrawberrySmoothie.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StrawberrySmoothie.png; sourceTree = "<group>"; };
 		54685A352D064183006CC01A /* TaroMilkTea.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TaroMilkTea.png; sourceTree = "<group>"; };
 		54685A362D064183006CC01A /* ThaiMilkTea.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ThaiMilkTea.png; sourceTree = "<group>"; };
+		9F5666452D06569400EFE847 /* Favorite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favorite.swift; sourceTree = "<group>"; };
+		9F5666472D06575600EFE847 /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +87,7 @@
 		22E873782770ED750018D924 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				9F5666452D06569400EFE847 /* Favorite.swift */,
 				22E873762770ED720018D924 /* Trivia.swift */,
 			);
 			path = Models;
@@ -131,6 +136,7 @@
 		22F2653C276CEEA40055E2BC /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				9F5666472D06575600EFE847 /* FavoritesView.swift */,
 				22F26530276CDEB60055E2BC /* StartView.swift */,
 				546859E12D03CCE5006CC01A /* TriviaView.swift */,
 				22F26548276D3B3E0055E2BC /* QuestionView.swift */,
@@ -263,7 +269,9 @@
 				22F26531276CDEB60055E2BC /* StartView.swift in Sources */,
 				22F26545276CFC7A0055E2BC /* TriviaManager.swift in Sources */,
 				546859E22D03CCEC006CC01A /* TriviaView.swift in Sources */,
+				9F5666462D06569700EFE847 /* Favorite.swift in Sources */,
 				22F2652F276CDEB60055E2BC /* TriviaGameApp.swift in Sources */,
+				9F5666482D06575B00EFE847 /* FavoritesView.swift in Sources */,
 				22F26543276CF68C0055E2BC /* AnswerRow.swift in Sources */,
 				22F26540276CEFAE0055E2BC /* Extensions.swift in Sources */,
 				22F26547276D2A7C0055E2BC /* ProgressBar.swift in Sources */,
@@ -405,6 +413,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -434,6 +443,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
