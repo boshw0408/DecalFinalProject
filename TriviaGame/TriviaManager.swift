@@ -84,12 +84,12 @@ class TriviaManager: ObservableObject {
                     TriviaModel.Answer(
                         text: "Prepare backup plans B and C in advance.",
                         outcomeType: 3,
-                        outcomeIndex: 0
+                        outcomeIndex: 1
                     ),
                     TriviaModel.Answer(
                         text: "I’m flexible and resourceful. I can overcome it.",
                         outcomeType: 3,
-                        outcomeIndex: 1
+                        outcomeIndex: 0
                     )
                 ]
             ),
@@ -212,12 +212,12 @@ class TriviaManager: ObservableObject {
                     TriviaModel.Answer(
                         text: "Oh, nice. Let’s review it together and find areas to adjust.",
                         outcomeType: 3,
-                        outcomeIndex: 0
+                        outcomeIndex: 1
                     ),
                     TriviaModel.Answer(
                         text: "Oh, nice. (This feels intense... This trip won’t be easy…).",
                         outcomeType: 3,
-                        outcomeIndex: 1
+                        outcomeIndex: 0
                     )
                 ]
             )

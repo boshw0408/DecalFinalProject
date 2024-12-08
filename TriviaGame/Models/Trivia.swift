@@ -41,6 +41,8 @@ struct TriviaModel {
         
         // Convert result bits to personality type
         let finalResult: String
+        print(resultBits)
+        print(binaryResultBits)
         switch binaryResultBits {
             case [0, 0, 0, 0]: finalResult = "Strawberry Milk Tea"        // ESTP: Energetic and refreshing personality
             case [0, 0, 0, 1]: finalResult = "Oreo Smoothie"              // ESTJ: Unique and attention-grabbing personality

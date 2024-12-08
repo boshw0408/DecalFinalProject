@@ -18,7 +18,6 @@
 		22F26547276D2A7C0055E2BC /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F26546276D2A7C0055E2BC /* ProgressBar.swift */; };
 		22F26549276D3B3E0055E2BC /* QuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F26548276D3B3E0055E2BC /* QuestionView.swift */; };
 		22F2654B276D3FFF0055E2BC /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F2654A276D3FFF0055E2BC /* PrimaryButton.swift */; };
-		546859E02D03CB44006CC01A /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546859DF2D03CB3F006CC01A /* ResultView.swift */; };
 		546859E22D03CCEC006CC01A /* TriviaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546859E12D03CCE5006CC01A /* TriviaView.swift */; };
 		54685A382D064183006CC01A /* MangoSmoothie.png in Resources */ = {isa = PBXBuildFile; fileRef = 54685A2D2D064183006CC01A /* MangoSmoothie.png */; };
 		54685A392D064183006CC01A /* CoconutSmoothie.png in Resources */ = {isa = PBXBuildFile; fileRef = 54685A2B2D064183006CC01A /* CoconutSmoothie.png */; };
@@ -51,7 +50,6 @@
 		22F26546276D2A7C0055E2BC /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		22F26548276D3B3E0055E2BC /* QuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionView.swift; sourceTree = "<group>"; };
 		22F2654A276D3FFF0055E2BC /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
-		546859DF2D03CB3F006CC01A /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
 		546859E12D03CCE5006CC01A /* TriviaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriviaView.swift; sourceTree = "<group>"; };
 		54685A272D064183006CC01A /* BrownSugarMilkTea.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BrownSugarMilkTea.png; sourceTree = "<group>"; };
 		54685A282D064183006CC01A /* CaramelMilkTea.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CaramelMilkTea.png; sourceTree = "<group>"; };
@@ -134,7 +132,6 @@
 			isa = PBXGroup;
 			children = (
 				22F26530276CDEB60055E2BC /* StartView.swift */,
-				546859DF2D03CB3F006CC01A /* ResultView.swift */,
 				546859E12D03CCE5006CC01A /* TriviaView.swift */,
 				22F26548276D3B3E0055E2BC /* QuestionView.swift */,
 			);
@@ -264,7 +261,6 @@
 				22F26549276D3B3E0055E2BC /* QuestionView.swift in Sources */,
 				22E873772770ED720018D924 /* Trivia.swift in Sources */,
 				22F26531276CDEB60055E2BC /* StartView.swift in Sources */,
-				546859E02D03CB44006CC01A /* ResultView.swift in Sources */,
 				22F26545276CFC7A0055E2BC /* TriviaManager.swift in Sources */,
 				546859E22D03CCEC006CC01A /* TriviaView.swift in Sources */,
 				22F2652F276CDEB60055E2BC /* TriviaGameApp.swift in Sources */,

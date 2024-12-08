@@ -60,7 +60,7 @@ struct QuestionView: View {
         .navigationBarHidden(true)
         .background(
             NavigationLink(
-                destination: ResultView(result: triviaManager.finalResult ?? ""),
+                destination: TriviaView(),
                 isActive: $navigateToResult,
                 label: { EmptyView() }
             )
