@@ -1,58 +1,65 @@
 //
-//  Trivia.swift
+//  ResultView.swift
 //  TriviaGame
 //
-//  Created by Stephanie Diep on 2021-12-20.
+//  Created by ccheck on 12/6/24.
 //
 
 import Foundation
 
-struct Trivia: Decodable {
-    var results: [Result]
+struct TriviaModel {
+    struct Question {
+        let question: String
+        let answers: [Answer]
+    }
     
-    struct Result: Decodable, Identifiable {
-        // We need to set the ID inside of the closure, because the API doesn' return us an ID for each result
-        var id: UUID {
-            UUID()
+    struct Answer {
+        let text: String
+        let outcomeType: Int    // 0: E,I / 1: S,N / 2: T,F / 3: P,J
+        let outcomeIndex: Int   // 0 or 1
+    }
+    
+    let questions: [Question]
+    private(set) var resultBits: [Int]
+    
+    init(questions: [Question])
+    {
+        self.questions = questions
+        self.resultBits = [0,0,0,0]
+    }
+    
+    mutating func recordAnswer(_ answer: Answer)
+    {
+        resultBits[answer.outcomeType] += answer.outcomeIndex
+    }
+    
+    // Calculates the final result
+    func calculateResult() -> String {
+        let binaryResultBits = resultBits.map { count in
+            count < 2 ? 0 : 1
         }
-        var category: String
-        var type: String
-        var difficulty: String
-        var question: String
-        var correctAnswer: String
-        var incorrectAnswers: [String]
         
-        // Custom coding key, not included in the API response, so we need to set it inside the closure
-        var formattedQuestion: AttributedString {
-            do {
-                // Formatting the question with AttributedString, because API might return some markdown text - which will be hard to read if we keep the string as is
-                return try AttributedString(markdown: question)
-            } catch {
-                // If we run into an error, return an empty string
-                print("Error setting formattedQuestion: \(error)")
-                return ""
-            }
+        // Convert result bits to personality type
+        let finalResult: String
+        switch binaryResultBits {
+            case [0, 0, 0, 0]: finalResult = "Strawberry Milk Tea"        // ESTP: Energetic and refreshing personality
+            case [0, 0, 0, 1]: finalResult = "Oreo Smoothie"              // ESTJ: Unique and attention-grabbing personality
+            case [0, 0, 1, 0]: finalResult = "Mango Green Tea"            // ESFP: Playful and enthusiastic personality
+            case [0, 0, 1, 1]: finalResult = "Brown Sugar Milk Tea"       // ESFJ: Trendy and eager personality
+            case [0, 1, 0, 0]: finalResult = "Coconut Smoothie"           // ENTP: Warm and approachable personality
+            case [0, 1, 0, 1]: finalResult = "Passion Fruit Green Tea"    // ENFJ: Outgoing and friendly personality
+            case [0, 1, 1, 0]: finalResult = "Taro Milk Tea"              // ENFP: Mysterious and thoughtful personality
+            case [0, 1, 1, 1]: finalResult = "Peach Green Tea"            // ENTJ: Sweet and imaginative personality
+            case [1, 0, 0, 0]: finalResult = "Mango Smoothie"             // ISTP: Passionate and hardworking personality
+            case [1, 0, 0, 1]: finalResult = "Classic Milk Tea"           // ISTJ: Responsible and traditional personality
+            case [1, 0, 1, 0]: finalResult = "Strawberry Smoothie"        // ISFP: Gentle and empathetic personality
+            case [1, 0, 1, 1]: finalResult = "Milk Green Tea"             // ISFJ: Classic and calm personality
+            case [1, 1, 0, 0]: finalResult = "Thai Milk Tea"              // INTP: Adventurous and spontaneous personality
+            case [1, 1, 0, 1]: finalResult = "Caramel Milk Tea"           // INTJ: Analytical and logical personality
+            case [1, 1, 1, 0]: finalResult = "Strawberry Fruit Tea"       // INFJ: Idealistic and insightful personality
+            case [1, 1, 1, 1]: finalResult = "Coconut Milk Tea"           // INFP: Supportive and inclusive personality
+            default: finalResult = "Unknown"                              // Fallback case
         }
-        // Custom coding key, not included in the API response, so we need to set it inside the closure
-
-        var answers: [Answer] {
-            do {
-                // Formatting all answer strings into AttributedStrings and creating an instance of Answer for each
-                let correct = [Answer(text: try AttributedString(markdown: correctAnswer), isCorrect: true)]
-                let incorrects = try incorrectAnswers.map { answer in
-                    Answer(text: try AttributedString(markdown: answer), isCorrect: false)
-                }
-                
-                // Merging the correct and incorrect arrays together
-                let allAnswers = correct + incorrects
-                
-                // Shuffling the answers so the correct answer isn't always the first answer of the array
-                return allAnswers.shuffled()
-            } catch {
-                // If we run into an error, return an empty array
-                print("Error setting answers: \(error)")
-                return []
-            }
-        }
+        return finalResult
     }
 }

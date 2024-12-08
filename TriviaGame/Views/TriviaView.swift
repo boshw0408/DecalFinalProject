@@ -1,3 +1,13 @@
+<<<<<<< HEAD
+=======
+//
+//  TriviaView.swift
+//  TriviaGame
+//
+//  Created by ccheck on 12/6/24.
+//
+
+>>>>>>> triviagame
 import SwiftUI
 import SwiftData
 
@@ -10,8 +20,21 @@ struct TriviaView: View {
         if triviaManager.reachedEnd {
             VStack(spacing: 20) {
                 Text("Trivia Game")
-                    .lilacTitle()
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                    .foregroundColor(Color("AccentColor"))
 
+                if let result = triviaManager.finalResult {
+                    Text("Your personality type is:")
+                        .font(.title2)
+                        .foregroundColor(.gray)
+                    Text(result)
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                        .foregroundColor(Color("AccentColor"))
+                }
+
+<<<<<<< HEAD
                 Text("Congratulations, you completed the game! 🥳")
                 Text("You scored \(triviaManager.score) out of \(triviaManager.length)")
 
@@ -21,8 +44,12 @@ struct TriviaView: View {
                     Task.init {
                         await triviaManager.fetchTrivia()
                     }
+=======
+                Button {
+                    triviaManager.restartQuiz()
+>>>>>>> triviagame
                 } label: {
-                    PrimaryButton(text: "Play again")
+                    PrimaryButton(text: "Play Again")
                 }
 
                 Button("Favorite This Score") {
@@ -38,11 +65,16 @@ struct TriviaView: View {
                     FavoritesView()
                 }
             }
-            .foregroundColor(Color("AccentColor"))
             .padding()
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Color(red: 0.984, green: 0.929, blue: 0.847))
+<<<<<<< HEAD
         } else {
+=======
+        }
+        
+        else {
+>>>>>>> triviagame
             QuestionView()
                 .environmentObject(triviaManager)
         }

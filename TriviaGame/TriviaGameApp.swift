@@ -1,8 +1,8 @@
 //
-//  TriviaGameApp.swift
+//  ResultView.swift
 //  TriviaGame
 //
-//  Created by Stephanie Diep on 2021-12-17.
+//  Created by ccheck on 12/6/24.
 //
 
 import SwiftUI
@@ -11,9 +11,18 @@ import SwiftUI
 struct TriviaGameApp: App {
     var body: some Scene {
         WindowGroup {
+<<<<<<< HEAD
             ContentView()
                 .environmentObject(TriviaManager())
+=======
+            NavigationView {
+                StartView()
+                    .environmentObject(TriviaManager())
+            }
+            .navigationViewStyle(StackNavigationViewStyle()) // For consistent navigation 
+>>>>>>> triviagame
         }
         .modelContainer(for: [Score.self]) // Register the Score model for persistence
     }
 }
+

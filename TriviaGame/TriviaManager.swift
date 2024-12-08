@@ -2,106 +2,263 @@
 //  TriviaManager.swift
 //  TriviaGame
 //
-//  Created by Stephanie Diep on 2021-12-17.
+//  Created by ccheck on 12/6/24.
 //
+
 
 import Foundation
 import SwiftUI
 import SwiftData
 
+
 class TriviaManager: ObservableObject {
-    // Variables to set trivia and length of trivia
-    private(set) var trivia: [Trivia.Result] = []
-    @Published private(set) var length = 0
+    
+    var triviaModel: TriviaModel
     
     // Variables to set question and answers
     @Published private(set) var index = 0
     @Published private(set) var question: AttributedString = ""
-    @Published private(set) var answerChoices: [Answer] = []
+    @Published private(set) var answerChoices: [TriviaModel.Answer] = []
     
     // Variables for score and progress
-    @Published private(set) var score = 0
     @Published private(set) var progress: CGFloat = 0.00
       
     // Variables to know if an answer has been selected and reached the end of trivia
-    @Published private(set) var answerSelected = false
+    @Published var answerSelected = false
     @Published private(set) var reachedEnd = false
+    @Published private(set) var finalResult: String? = nil
     
-    // Call the fetchTrivia function on intialize of the class, asynchronously
-    init() {
-        Task.init {
-            await fetchTrivia()
-        }
-    }
-    
-    // Asynchronous HTTP request to get the trivia questions and answers
-    func fetchTrivia() async {
-        guard let url = URL(string: "https://opentdb.com/api.php?amount=10") else { fatalError("Missing URL") }
-        
-        let urlRequest = URLRequest(url: url)
-        
-        do {
-            let (data, response) = try await URLSession.shared.data(for: urlRequest)
+    // 0: E,I / 1: S,N / 2: T,F / 3: J,P
+    init(){
+        self.triviaModel = TriviaModel(questions: [
+            TriviaModel.Question(
+                question: "Suddenly, tomorrow has been declared a national holiday, so you have the day off.",
+                answers: [
+                    TriviaModel.Answer(
+                        text: "Yay! Let's go out and have fun!",
+                        outcomeType: 0,
+                        outcomeIndex: 0
+                    ),
+                    TriviaModel.Answer(
+                        text: "Yay! Time to binge-watch YouTube!",
+                        outcomeType: 0,
+                        outcomeIndex: 1
+                    )
+                ]
+            ),
             
-            guard (response as? HTTPURLResponse)?.statusCode == 200 else { fatalError("Error while fetching data") }
-
-            let decoder = JSONDecoder()
-            // Line below allows us to convert the correct_answer key from the API into the correctAnswer in our Trivia model, without running into an error from the JSONDecoder that it couldn't find a matching codingKey
-            decoder.keyDecodingStrategy = .convertFromSnakeCase
-            let decodedData = try decoder.decode(Trivia.self, from: data)
-
-            DispatchQueue.main.async {
-                // Reset variables before assigning new values, for when the user plays the game another time
-                self.index = 0
-                self.score = 0
-                self.progress = 0.00
-                self.reachedEnd = false
-
-                // Set new values for all variables
-                self.trivia = decodedData.results
-                self.length = self.trivia.count
-                self.setQuestion()
-            }
-        } catch {
-            print("Error fetching trivia: \(error)")
-        }
-    }
-    
-    // Function to go to next question. If reached end of the trivia, set reachedEnd to true
-    func goToNextQuestion() {
-        // If didn't reach end of array, increment index and set next question
-        if index + 1 < length {
-            index += 1
-            setQuestion()
-        } else {
-            // If reached end of array, set reachedEnd to true
-            reachedEnd = true
-        }
+            TriviaModel.Question(
+                question: "You went to a local restaurant, and the owner served you cakes.",
+                answers: [
+                    TriviaModel.Answer(
+                        text: "Yay! (ready to eat).",
+                        outcomeType: 1,
+                        outcomeIndex: 0
+                    ),
+                    TriviaModel.Answer(
+                        text: "Why did he give me this cake?",
+                        outcomeType: 1,
+                        outcomeIndex: 1
+                    )
+                ]
+            ),
+            
+            TriviaModel.Question(
+                question: "A story that makes me even happier is...",
+                answers: [
+                    TriviaModel.Answer(
+                        text: "I think you’re someone who can accomplish anything, anywhere.",
+                        outcomeType: 2,
+                        outcomeIndex: 0
+                    ),
+                    TriviaModel.Answer(
+                        text: "You’re the kind of person I want to stay close to for a long time.",
+                        outcomeType: 2,
+                        outcomeIndex: 1
+                    )
+                ]
+            ),
+            
+            TriviaModel.Question(
+                question: "Because plans can fall apart at any time...",
+                answers: [
+                    TriviaModel.Answer(
+                        text: "Prepare backup plans B and C in advance.",
+                        outcomeType: 3,
+                        outcomeIndex: 0
+                    ),
+                    TriviaModel.Answer(
+                        text: "I’m flexible and resourceful. I can overcome it.",
+                        outcomeType: 3,
+                        outcomeIndex: 1
+                    )
+                ]
+            ),
+            
+            TriviaModel.Question(
+                question: "If one day, smells became visible like coloured smoke...",
+                answers: [
+                    TriviaModel.Answer(
+                        text: "I’m curious to know what colour my scent would be.",
+                        outcomeType: 1,
+                        outcomeIndex: 1
+                    ),
+                    TriviaModel.Answer(
+                        text: "That sounds uncomfortable.",
+                        outcomeType: 1,
+                        outcomeIndex: 0
+                    )
+                ]
+            ),
+            
+            TriviaModel.Question(
+                question: "When I’m among people...",
+                answers: [
+                    TriviaModel.Answer(
+                        text: "I’m someone whose presence is always noticeable, no matter where I am.",
+                        outcomeType: 0,
+                        outcomeIndex: 0
+                    ),
+                    TriviaModel.Answer(
+                        text: "I’m someone who is essential, even if my presence is subtle.",
+                        outcomeType: 0,
+                        outcomeIndex: 1
+                    )
+                ]
+            ),
+            
+            TriviaModel.Question(
+                question: "Looking back after overcoming tough times...",
+                answers: [
+                    TriviaModel.Answer(
+                        text: "It was thanks to my experiences and efforts.",
+                        outcomeType: 2,
+                        outcomeIndex: 0
+                    ),
+                    TriviaModel.Answer(
+                        text: "It was thanks to the warm support and encouragement I received.",
+                        outcomeType: 2,
+                        outcomeIndex: 1
+                    )
+                ]
+            ),
+            
+            TriviaModel.Question(
+                question: "If one morning, you suddenly became fluent in Korean...",
+                answers: [
+                    TriviaModel.Answer(
+                        text: "Make Korean friends, haha.",
+                        outcomeType: 0,
+                        outcomeIndex: 0
+                    ),
+                    TriviaModel.Answer(
+                        text: "Watch Netflix K-dramas without subtitles, haha.",
+                        outcomeType: 0,
+                        outcomeIndex: 1
+                    )
+                ]
+            ),
+            
+            TriviaModel.Question(
+                question: "You bought tanghulu, but the sugar coating looks too thick...",
+                answers: [
+                    TriviaModel.Answer(
+                        text: "Oh... If I eat it wrong, I might hurt my mouth. Better eat it carefully.",
+                        outcomeType: 1,
+                        outcomeIndex: 1
+                    ),
+                    TriviaModel.Answer(
+                        text: "(Smirking) Let’s see just how thick it is by trying it.",
+                        outcomeType: 1,
+                        outcomeIndex: 0
+                    )
+                ]
+            ),
+            
+            TriviaModel.Question(
+                question: "The kind of boss I want to work with is...",
+                answers: [
+                    TriviaModel.Answer(
+                        text: "A boss with exceptional insight to identify the core of the problem.",
+                        outcomeType: 2,
+                        outcomeIndex: 0
+                    ),
+                    TriviaModel.Answer(
+                        text: "A boss with outstanding tolerance to embrace diversity.",
+                        outcomeType: 2,
+                        outcomeIndex: 1
+                    )
+                ]
+            ),
+            
+            TriviaModel.Question(
+                question: "A situation that stresses me out more is...",
+                answers: [
+                    TriviaModel.Answer(
+                        text: "When everything I planned falls apart, and I can’t accomplish a single thing properly.",
+                        outcomeType: 3,
+                        outcomeIndex: 1
+                    ),
+                    TriviaModel.Answer(
+                        text: "When everything is so planned out that I don’t have a moment of freedom.",
+                        outcomeType: 3,
+                        outcomeIndex: 0
+                    )
+                ]
+            ),
+            
+            TriviaModel.Question(
+                question: "If a friend I’m traveling with hands me a detailed schedule broken into 30-minute intervals...",
+                answers: [
+                    TriviaModel.Answer(
+                        text: "Oh, nice. Let’s review it together and find areas to adjust.",
+                        outcomeType: 3,
+                        outcomeIndex: 0
+                    ),
+                    TriviaModel.Answer(
+                        text: "Oh, nice. (This feels intense... This trip won’t be easy…).",
+                        outcomeType: 3,
+                        outcomeIndex: 1
+                    )
+                ]
+            )
+        ])
+        setQuestion()
     }
     
     // Function to set a new question and answer choices, and update the progress
     func setQuestion() {
         answerSelected = false
-        progress = CGFloat(Double((index + 1)) / Double(length) * 350)
-
-        // Only setting next question if index is smaller than the trivia's length
-        if index < length {
-            let currentTriviaQuestion = trivia[index]
-            question = currentTriviaQuestion.formattedQuestion
-            answerChoices = currentTriviaQuestion.answers
-        }
+        progress = CGFloat(Double((index + 1)) / Double(triviaModel.questions.count) * 350)
+        
+        let currentQuestion = triviaModel.questions[index]
+        question = AttributedString(currentQuestion.question)
+        answerChoices = currentQuestion.answers
     }
     
     // Function to know that user selected an answer, and update the score
-    func selectAnswer(answer: Answer) {
+    func selectAnswer(answer: TriviaModel.Answer) {
         answerSelected = true
         
-        // If answer is correct, increment score
-        if answer.isCorrect {
-            score += 1
+        // Debug: Print the selected answer
+        print("Selected answer: \(answer.text), OutcomeType: \(answer.outcomeType), OutcomeIndex: \(answer.outcomeIndex)")
+        
+        // Record the selected answer in the trivia model
+        triviaModel.recordAnswer(answer)
+    }
+    
+    // Function to move to the next question or end the game
+    func goToNextQuestion() {
+        if index + 1 < triviaModel.questions.count {
+            index += 1
+            setQuestion()
+        } else {
+            reachedEnd = true
+            calculateFinalResult()
         }
     }
     
+<<<<<<< HEAD
     // Funtion for addressing favorite (Save, Select)
     func saveScore(modelContext: ModelContext) {
             let newScore = Score(value: score)
@@ -111,6 +268,18 @@ class TriviaManager: ObservableObject {
     func favoriteCurrentScore(modelContext: ModelContext) {
         let favoriteScore = Score(value: score, isFavorite: true)
         modelContext.insert(favoriteScore)
+=======
+    // Function to calculate the final result
+    private func calculateFinalResult() {
+        finalResult = triviaModel.calculateResult()
+    }
+    
+    // Function to restart the quiz
+    func restartQuiz() {
+        index = 0
+        reachedEnd = false
+        finalResult = nil
+        setQuestion()
+>>>>>>> triviagame
     }
 }
-
