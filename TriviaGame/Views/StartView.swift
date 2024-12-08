@@ -1,29 +1,27 @@
 //
-//  ContentView.swift
+//  StartView.swift
 //  TriviaGame
 //
-//  Created by Stephanie Diep on 2021-12-17.
+//  Created by ccheck on 12/6/24.
 //
 
 import SwiftUI
 
-struct ContentView: View {
-    @StateObject var triviaManager = TriviaManager()
-    
+struct StartView: View {
     var body: some View {
         NavigationView {
             VStack(spacing: 40) {
                 VStack(spacing: 20) {
-                    Text("Trivia Game")
+                    Text("Boba Time!")
                         .lilacTitle()
                     
-                    Text("Are you ready to test out your trivia skills?")
+                    Text("What kind of boba are you most like?")
                         .foregroundColor(Color("AccentColor"))
                 }
                 
                 NavigationLink {
                     TriviaView()
-                        .environmentObject(triviaManager)
+                        .environmentObject(TriviaManager())
                 } label: {
                     PrimaryButton(text: "Let's go!")
                 }
@@ -35,8 +33,8 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct StartView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        StartView()
     }
 }

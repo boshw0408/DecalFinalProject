@@ -20,45 +20,46 @@ struct TriviaModel {
     }
     
     let questions: [Question]
-    private(set) var outcomeCounts: [Int: [Int]]
+    private(set) var resultBits: [Int]
     
     init(questions: [Question])
     {
         self.questions = questions
-        self.outcomeCounts = [
-        0: [0, 0], // E: 0, I: 1
-        1: [0, 0], // S: 0, N: 1
-        2: [0, 0], // T: 0, F: 1
-        3: [0, 0]  // P: 0, J: 1
-    ]
+        self.resultBits = [0,0,0,0]
     }
     
     mutating func recordAnswer(_ answer: Answer)
     {
-        outcomeCounts[answer.outcomeType]?[answer.outcomeIndex] += 1
+        resultBits[answer.outcomeType] += answer.outcomeIndex
     }
     
-    // Calculates the final result as a 4-letter personality type
-        func calculateResult() -> String {
-            let resultBits = outcomeCounts.keys.sorted().map { type -> Int in
-                let counts = outcomeCounts[type] ?? [0, 0]
-                return counts[0] > counts[1] ? 0 : 1
-            }
-
-            // Convert result bits to personality type
-            return resultBits.enumerated().map { (index, bit) in
-                switch (index, bit) {
-                case (0, 0): return "E"
-                case (0, 1): return "I"
-                case (1, 0): return "S"
-                case (1, 1): return "N"
-                case (2, 0): return "T"
-                case (2, 1): return "F"
-                case (3, 0): return "P"
-                case (3, 1): return "J"
-                default: return ""
-                }
-            }.joined()
+    // Calculates the final result
+    func calculateResult() -> String {
+        let binaryResultBits = resultBits.map { count in
+            count < 2 ? 0 : 1
         }
-    
+        
+        // Convert result bits to personality type
+        let finalResult: String
+        switch binaryResultBits {
+            case [0, 0, 0, 0]: finalResult = "Strawberry Milk Tea"        // ESTP: Energetic and refreshing personality
+            case [0, 0, 0, 1]: finalResult = "Oreo Smoothie"              // ESTJ: Unique and attention-grabbing personality
+            case [0, 0, 1, 0]: finalResult = "Mango Green Tea"            // ESFP: Playful and enthusiastic personality
+            case [0, 0, 1, 1]: finalResult = "Brown Sugar Milk Tea"       // ESFJ: Trendy and eager personality
+            case [0, 1, 0, 0]: finalResult = "Coconut Smoothie"           // ENTP: Warm and approachable personality
+            case [0, 1, 0, 1]: finalResult = "Passion Fruit Green Tea"    // ENFJ: Outgoing and friendly personality
+            case [0, 1, 1, 0]: finalResult = "Taro Milk Tea"              // ENFP: Mysterious and thoughtful personality
+            case [0, 1, 1, 1]: finalResult = "Peach Green Tea"            // ENTJ: Sweet and imaginative personality
+            case [1, 0, 0, 0]: finalResult = "Mango Smoothie"             // ISTP: Passionate and hardworking personality
+            case [1, 0, 0, 1]: finalResult = "Classic Milk Tea"           // ISTJ: Responsible and traditional personality
+            case [1, 0, 1, 0]: finalResult = "Strawberry Smoothie"        // ISFP: Gentle and empathetic personality
+            case [1, 0, 1, 1]: finalResult = "Milk Green Tea"             // ISFJ: Classic and calm personality
+            case [1, 1, 0, 0]: finalResult = "Thai Milk Tea"              // INTP: Adventurous and spontaneous personality
+            case [1, 1, 0, 1]: finalResult = "Caramel Milk Tea"           // INTJ: Analytical and logical personality
+            case [1, 1, 1, 0]: finalResult = "Strawberry Fruit Tea"       // INFJ: Idealistic and insightful personality
+            case [1, 1, 1, 1]: finalResult = "Coconut Milk Tea"           // INFP: Supportive and inclusive personality
+            default: finalResult = "Unknown"                              // Fallback case
+        }
+        return finalResult
+    }
 }

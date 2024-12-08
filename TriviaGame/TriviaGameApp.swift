@@ -11,7 +11,12 @@ import SwiftUI
 struct TriviaGameApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NavigationView {
+                StartView()
+                    .environmentObject(TriviaManager())
+            }
+            .navigationViewStyle(StackNavigationViewStyle()) // For consistent navigation 
         }
     }
 }
+

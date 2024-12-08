@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		22E873772770ED720018D924 /* Trivia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E873762770ED720018D924 /* Trivia.swift */; };
 		22F2652F276CDEB60055E2BC /* TriviaGameApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F2652E276CDEB60055E2BC /* TriviaGameApp.swift */; };
-		22F26531276CDEB60055E2BC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F26530276CDEB60055E2BC /* ContentView.swift */; };
+		22F26531276CDEB60055E2BC /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F26530276CDEB60055E2BC /* StartView.swift */; };
 		22F26533276CDEB70055E2BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22F26532276CDEB70055E2BC /* Assets.xcassets */; };
 		22F26536276CDEB70055E2BC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22F26535276CDEB70055E2BC /* Preview Assets.xcassets */; };
 		22F26540276CEFAE0055E2BC /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F2653F276CEFAE0055E2BC /* Extensions.swift */; };
@@ -20,13 +20,29 @@
 		22F2654B276D3FFF0055E2BC /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F2654A276D3FFF0055E2BC /* PrimaryButton.swift */; };
 		546859E02D03CB44006CC01A /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546859DF2D03CB3F006CC01A /* ResultView.swift */; };
 		546859E22D03CCEC006CC01A /* TriviaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546859E12D03CCE5006CC01A /* TriviaView.swift */; };
+		54685A382D064183006CC01A /* MangoSmoothie.png in Resources */ = {isa = PBXBuildFile; fileRef = 54685A2D2D064183006CC01A /* MangoSmoothie.png */; };
+		54685A392D064183006CC01A /* CoconutSmoothie.png in Resources */ = {isa = PBXBuildFile; fileRef = 54685A2B2D064183006CC01A /* CoconutSmoothie.png */; };
+		54685A3A2D064183006CC01A /* ClassicMilkTea.png in Resources */ = {isa = PBXBuildFile; fileRef = 54685A292D064183006CC01A /* ClassicMilkTea.png */; };
+		54685A3B2D064183006CC01A /* ThaiMilkTea.png in Resources */ = {isa = PBXBuildFile; fileRef = 54685A362D064183006CC01A /* ThaiMilkTea.png */; };
+		54685A3C2D064183006CC01A /* PassionFruitGreenTea.png in Resources */ = {isa = PBXBuildFile; fileRef = 54685A302D064183006CC01A /* PassionFruitGreenTea.png */; };
+		54685A3D2D064183006CC01A /* PeachGreenTea.png in Resources */ = {isa = PBXBuildFile; fileRef = 54685A312D064183006CC01A /* PeachGreenTea.png */; };
+		54685A3E2D064183006CC01A /* MangoGreenTea.png in Resources */ = {isa = PBXBuildFile; fileRef = 54685A2C2D064183006CC01A /* MangoGreenTea.png */; };
+		54685A3F2D064183006CC01A /* CoconutMilkTea.png in Resources */ = {isa = PBXBuildFile; fileRef = 54685A2A2D064183006CC01A /* CoconutMilkTea.png */; };
+		54685A402D064183006CC01A /* OreoSmoothie.png in Resources */ = {isa = PBXBuildFile; fileRef = 54685A2F2D064183006CC01A /* OreoSmoothie.png */; };
+		54685A412D064183006CC01A /* StrawberrySmoothie.png in Resources */ = {isa = PBXBuildFile; fileRef = 54685A342D064183006CC01A /* StrawberrySmoothie.png */; };
+		54685A422D064183006CC01A /* StrawberryMilkTea.png in Resources */ = {isa = PBXBuildFile; fileRef = 54685A332D064183006CC01A /* StrawberryMilkTea.png */; };
+		54685A432D064183006CC01A /* StrawberryFruitTea.png in Resources */ = {isa = PBXBuildFile; fileRef = 54685A322D064183006CC01A /* StrawberryFruitTea.png */; };
+		54685A442D064183006CC01A /* BrownSugarMilkTea.png in Resources */ = {isa = PBXBuildFile; fileRef = 54685A272D064183006CC01A /* BrownSugarMilkTea.png */; };
+		54685A452D064183006CC01A /* TaroMilkTea.png in Resources */ = {isa = PBXBuildFile; fileRef = 54685A352D064183006CC01A /* TaroMilkTea.png */; };
+		54685A462D064183006CC01A /* MilkGreenTea.png in Resources */ = {isa = PBXBuildFile; fileRef = 54685A2E2D064183006CC01A /* MilkGreenTea.png */; };
+		54685A472D064183006CC01A /* CaramelMilkTea.png in Resources */ = {isa = PBXBuildFile; fileRef = 54685A282D064183006CC01A /* CaramelMilkTea.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		22E873762770ED720018D924 /* Trivia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trivia.swift; sourceTree = "<group>"; };
 		22F2652B276CDEB60055E2BC /* TriviaGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TriviaGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22F2652E276CDEB60055E2BC /* TriviaGameApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriviaGameApp.swift; sourceTree = "<group>"; };
-		22F26530276CDEB60055E2BC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		22F26530276CDEB60055E2BC /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
 		22F26532276CDEB70055E2BC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		22F26535276CDEB70055E2BC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		22F2653F276CEFAE0055E2BC /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -37,6 +53,22 @@
 		22F2654A276D3FFF0055E2BC /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
 		546859DF2D03CB3F006CC01A /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
 		546859E12D03CCE5006CC01A /* TriviaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriviaView.swift; sourceTree = "<group>"; };
+		54685A272D064183006CC01A /* BrownSugarMilkTea.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BrownSugarMilkTea.png; sourceTree = "<group>"; };
+		54685A282D064183006CC01A /* CaramelMilkTea.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CaramelMilkTea.png; sourceTree = "<group>"; };
+		54685A292D064183006CC01A /* ClassicMilkTea.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ClassicMilkTea.png; sourceTree = "<group>"; };
+		54685A2A2D064183006CC01A /* CoconutMilkTea.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CoconutMilkTea.png; sourceTree = "<group>"; };
+		54685A2B2D064183006CC01A /* CoconutSmoothie.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CoconutSmoothie.png; sourceTree = "<group>"; };
+		54685A2C2D064183006CC01A /* MangoGreenTea.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MangoGreenTea.png; sourceTree = "<group>"; };
+		54685A2D2D064183006CC01A /* MangoSmoothie.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MangoSmoothie.png; sourceTree = "<group>"; };
+		54685A2E2D064183006CC01A /* MilkGreenTea.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MilkGreenTea.png; sourceTree = "<group>"; };
+		54685A2F2D064183006CC01A /* OreoSmoothie.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OreoSmoothie.png; sourceTree = "<group>"; };
+		54685A302D064183006CC01A /* PassionFruitGreenTea.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PassionFruitGreenTea.png; sourceTree = "<group>"; };
+		54685A312D064183006CC01A /* PeachGreenTea.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PeachGreenTea.png; sourceTree = "<group>"; };
+		54685A322D064183006CC01A /* StrawberryFruitTea.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StrawberryFruitTea.png; sourceTree = "<group>"; };
+		54685A332D064183006CC01A /* StrawberryMilkTea.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StrawberryMilkTea.png; sourceTree = "<group>"; };
+		54685A342D064183006CC01A /* StrawberrySmoothie.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StrawberrySmoothie.png; sourceTree = "<group>"; };
+		54685A352D064183006CC01A /* TaroMilkTea.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TaroMilkTea.png; sourceTree = "<group>"; };
+		54685A362D064183006CC01A /* ThaiMilkTea.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ThaiMilkTea.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +116,7 @@
 				22F26541276CF4000055E2BC /* Components */,
 				22E873782770ED750018D924 /* Models */,
 				22F26532276CDEB70055E2BC /* Assets.xcassets */,
+				54685A372D064183006CC01A /* pics */,
 				22F26534276CDEB70055E2BC /* Preview Content */,
 			);
 			path = TriviaGame;
@@ -100,7 +133,7 @@
 		22F2653C276CEEA40055E2BC /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				22F26530276CDEB60055E2BC /* ContentView.swift */,
+				22F26530276CDEB60055E2BC /* StartView.swift */,
 				546859DF2D03CB3F006CC01A /* ResultView.swift */,
 				546859E12D03CCE5006CC01A /* TriviaView.swift */,
 				22F26548276D3B3E0055E2BC /* QuestionView.swift */,
@@ -117,6 +150,29 @@
 			);
 			path = Components;
 			sourceTree = "<group>";
+		};
+		54685A372D064183006CC01A /* pics */ = {
+			isa = PBXGroup;
+			children = (
+				54685A282D064183006CC01A /* CaramelMilkTea.png */,
+				54685A292D064183006CC01A /* ClassicMilkTea.png */,
+				54685A2A2D064183006CC01A /* CoconutMilkTea.png */,
+				54685A2B2D064183006CC01A /* CoconutSmoothie.png */,
+				54685A2C2D064183006CC01A /* MangoGreenTea.png */,
+				54685A2D2D064183006CC01A /* MangoSmoothie.png */,
+				54685A2E2D064183006CC01A /* MilkGreenTea.png */,
+				54685A2F2D064183006CC01A /* OreoSmoothie.png */,
+				54685A302D064183006CC01A /* PassionFruitGreenTea.png */,
+				54685A312D064183006CC01A /* PeachGreenTea.png */,
+				54685A322D064183006CC01A /* StrawberryFruitTea.png */,
+				54685A332D064183006CC01A /* StrawberryMilkTea.png */,
+				54685A342D064183006CC01A /* StrawberrySmoothie.png */,
+				54685A352D064183006CC01A /* TaroMilkTea.png */,
+				54685A362D064183006CC01A /* ThaiMilkTea.png */,
+				54685A272D064183006CC01A /* BrownSugarMilkTea.png */,
+			);
+			path = pics;
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
@@ -178,6 +234,22 @@
 			files = (
 				22F26536276CDEB70055E2BC /* Preview Assets.xcassets in Resources */,
 				22F26533276CDEB70055E2BC /* Assets.xcassets in Resources */,
+				54685A382D064183006CC01A /* MangoSmoothie.png in Resources */,
+				54685A392D064183006CC01A /* CoconutSmoothie.png in Resources */,
+				54685A3A2D064183006CC01A /* ClassicMilkTea.png in Resources */,
+				54685A3B2D064183006CC01A /* ThaiMilkTea.png in Resources */,
+				54685A3C2D064183006CC01A /* PassionFruitGreenTea.png in Resources */,
+				54685A3D2D064183006CC01A /* PeachGreenTea.png in Resources */,
+				54685A3E2D064183006CC01A /* MangoGreenTea.png in Resources */,
+				54685A3F2D064183006CC01A /* CoconutMilkTea.png in Resources */,
+				54685A402D064183006CC01A /* OreoSmoothie.png in Resources */,
+				54685A412D064183006CC01A /* StrawberrySmoothie.png in Resources */,
+				54685A422D064183006CC01A /* StrawberryMilkTea.png in Resources */,
+				54685A432D064183006CC01A /* StrawberryFruitTea.png in Resources */,
+				54685A442D064183006CC01A /* BrownSugarMilkTea.png in Resources */,
+				54685A452D064183006CC01A /* TaroMilkTea.png in Resources */,
+				54685A462D064183006CC01A /* MilkGreenTea.png in Resources */,
+				54685A472D064183006CC01A /* CaramelMilkTea.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -191,7 +263,7 @@
 				22F2654B276D3FFF0055E2BC /* PrimaryButton.swift in Sources */,
 				22F26549276D3B3E0055E2BC /* QuestionView.swift in Sources */,
 				22E873772770ED720018D924 /* Trivia.swift in Sources */,
-				22F26531276CDEB60055E2BC /* ContentView.swift in Sources */,
+				22F26531276CDEB60055E2BC /* StartView.swift in Sources */,
 				546859E02D03CB44006CC01A /* ResultView.swift in Sources */,
 				22F26545276CFC7A0055E2BC /* TriviaManager.swift in Sources */,
 				546859E22D03CCEC006CC01A /* TriviaView.swift in Sources */,

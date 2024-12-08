@@ -30,7 +30,13 @@ struct AnswerRow: View {
         .cornerRadius(10)
         .shadow(color: .gray, radius: 5, x: 0.5, y: 0.5)
         .onTapGesture {
-            if !triviaManager.answerSelected {
+            if isSelected {
+                // Unselect the answer
+                isSelected = false
+                triviaManager.answerSelected = false
+            }
+            else if !triviaManager.answerSelected {
+                // Select the answer
                 isSelected = true
                 triviaManager.selectAnswer(answer: answer)
             }

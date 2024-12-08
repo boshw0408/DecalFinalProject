@@ -18,9 +18,6 @@ struct TriviaView: View {
                     .fontWeight(.bold)
                     .foregroundColor(Color("AccentColor"))
 
-                Text("Congratulations, you completed the game! 🥳")
-                    .multilineTextAlignment(.center)
-
                 if let result = triviaManager.finalResult {
                     Text("Your personality type is:")
                         .font(.title2)
@@ -40,7 +37,9 @@ struct TriviaView: View {
             .padding()
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Color(red: 0.984, green: 0.929, blue: 0.847))
-        } else {
+        }
+        
+        else {
             QuestionView()
                 .environmentObject(triviaManager)
         }
