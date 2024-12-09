@@ -7,7 +7,6 @@
 
 import Foundation
 import SwiftUI
-import SwiftData
 
 
 class QuizManager: ObservableObject {
@@ -22,13 +21,8 @@ class QuizManager: ObservableObject {
     
     // Variables for score and progress
     @Published private(set) var progress: CGFloat = 0.00
-<<<<<<< HEAD:TriviaGame/TriviaManager.swift
-      
-    // Variables to know if an answer has been selected and reached the end of trivia
-=======
     
     // Variables to know if an answer has been selected and reached the end of quiz
->>>>>>> triviagame:QuizGame/QuizManager.swift
     @Published var answerSelected = false
     @Published private(set) var reachedEnd = false
     @Published private(set) var finalResult: String? = nil
@@ -264,17 +258,6 @@ class QuizManager: ObservableObject {
         }
     }
     
-<<<<<<< HEAD
-    // Funtion for addressing favorite (Save, Select)
-    func saveScore(modelContext: ModelContext) {
-            let newScore = Score(value: score)
-            modelContext.insert(newScore)
-        }
-        
-    func favoriteCurrentScore(modelContext: ModelContext) {
-        let favoriteScore = Score(value: score, isFavorite: true)
-        modelContext.insert(favoriteScore)
-=======
     // Function to calculate the final result
     private func calculateFinalResult() {
         finalResult = quizModel.calculateResult()
@@ -286,9 +269,6 @@ class QuizManager: ObservableObject {
         reachedEnd = false
         finalResult = nil
         setQuestion()
-<<<<<<< HEAD:TriviaGame/TriviaManager.swift
->>>>>>> triviagame
-=======
         isHome = false
     }
     
@@ -299,6 +279,5 @@ class QuizManager: ObservableObject {
         finalResult = nil
         setQuestion()
         isHome = true
->>>>>>> triviagame:QuizGame/QuizManager.swift
     }
 }

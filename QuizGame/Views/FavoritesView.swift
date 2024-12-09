@@ -1,39 +1,15 @@
+
 //
-<<<<<<< HEAD:TriviaGame/Views/FavoritesView.swift
-//  FavoriteView.swift
-//  TriviaGame
-//
-//  Created by 황보성 on 12/6/24.
-=======
 //  FavoritesView.swift
 //  QuizGame
 //
 //  Created by 황보성 on 12/8/24.
->>>>>>> triviagame:QuizGame/Views/FavoritesView.swift
 //
 
 import SwiftUI
 import SwiftData
 
 struct FavoritesView: View {
-<<<<<<< HEAD:TriviaGame/Views/FavoritesView.swift
-    @Query private var favoriteScores: [Score] // Fetch all scores
-
-    var body: some View {
-        NavigationView {
-            List(favoriteScores.filter { $0.isFavorite }) { score in
-                Text("Score: \(score.value)")
-                    .font(.headline)
-            }
-            .navigationTitle("Favorite Scores")
-        }
-    }
-}
-
-struct FavoriteView_Previews: PreviewProvider {
-    static var previews: some View {
-        FavoritesView()
-=======
     @Query(sort: \Favorite.result, order: .forward) var favorites: [Favorite]
 
     var body: some View {
@@ -92,6 +68,6 @@ struct FavoriteView_Previews: PreviewProvider {
 
     private func getImageName(for result: String) -> String {
         return result.replacingOccurrences(of: " ", with: "")
->>>>>>> triviagame:QuizGame/Views/FavoritesView.swift
     }
 }
+

@@ -46,7 +46,7 @@ struct QuizView: View {
                         Button {
                             addToFavorites(result)
                         } label: {
-                            Label("Favorites", systemImage: "heart.circle.fill") 
+                            Label("Favorites", systemImage: "heart.circle.fill")
                                 .padding()
                                 .background(Color(red: 0.768, green: 0.655, blue: 0.905))
                                 .foregroundColor(.white)
