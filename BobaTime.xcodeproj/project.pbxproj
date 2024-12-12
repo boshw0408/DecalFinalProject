@@ -18,6 +18,7 @@
 		22F26547276D2A7C0055E2BC /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F26546276D2A7C0055E2BC /* ProgressBar.swift */; };
 		22F26549276D3B3E0055E2BC /* QuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F26548276D3B3E0055E2BC /* QuestionView.swift */; };
 		22F2654B276D3FFF0055E2BC /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F2654A276D3FFF0055E2BC /* PrimaryButton.swift */; };
+		540DC9B22D0BADAB000D266B /* appicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 540DC9B12D0BADAB000D266B /* appicon.png */; };
 		546859E22D03CCEC006CC01A /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546859E12D03CCE5006CC01A /* QuizView.swift */; };
 		54685A382D064183006CC01A /* MangoSmoothie.png in Resources */ = {isa = PBXBuildFile; fileRef = 54685A2D2D064183006CC01A /* MangoSmoothie.png */; };
 		54685A392D064183006CC01A /* CoconutSmoothie.png in Resources */ = {isa = PBXBuildFile; fileRef = 54685A2B2D064183006CC01A /* CoconutSmoothie.png */; };
@@ -52,6 +53,7 @@
 		22F26546276D2A7C0055E2BC /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		22F26548276D3B3E0055E2BC /* QuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionView.swift; sourceTree = "<group>"; };
 		22F2654A276D3FFF0055E2BC /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
+		540DC9B12D0BADAB000D266B /* appicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appicon.png; sourceTree = "<group>"; };
 		546859E12D03CCE5006CC01A /* QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizView.swift; sourceTree = "<group>"; };
 		54685A272D064183006CC01A /* BrownSugarMilkTea.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BrownSugarMilkTea.png; sourceTree = "<group>"; };
 		54685A282D064183006CC01A /* CaramelMilkTea.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CaramelMilkTea.png; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 				54685A352D064183006CC01A /* TaroMilkTea.png */,
 				54685A362D064183006CC01A /* ThaiMilkTea.png */,
 				54685A272D064183006CC01A /* BrownSugarMilkTea.png */,
+				540DC9B12D0BADAB000D266B /* appicon.png */,
 			);
 			path = pics;
 			sourceTree = SOURCE_ROOT;
@@ -252,6 +255,7 @@
 				54685A442D064183006CC01A /* BrownSugarMilkTea.png in Resources */,
 				54685A452D064183006CC01A /* TaroMilkTea.png in Resources */,
 				54685A462D064183006CC01A /* MilkGreenTea.png in Resources */,
+				540DC9B22D0BADAB000D266B /* appicon.png in Resources */,
 				54685A472D064183006CC01A /* CaramelMilkTea.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

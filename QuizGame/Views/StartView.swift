@@ -17,6 +17,14 @@ struct StartView: View {
                     
                     Text("What kind of boba are you most like?")
                         .foregroundColor(Color("AccentColor"))
+                    
+                    Image("appicon")
+                            .resizable()
+                            .scaledToFit() 
+                            .frame(width: 150, height: 150) // Adjust size as needed
+                            .clipShape(Circle()) // Optional: Renders the logo as a circle
+                            .shadow(radius: 10) // Adds a shadow for a polished look
+                        
                 }
                 
                 NavigationLink {
