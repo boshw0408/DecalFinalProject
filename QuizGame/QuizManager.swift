@@ -22,6 +22,9 @@ class QuizManager: ObservableObject {
     // Variables for score and progress
     @Published private(set) var progress: CGFloat = 0.00
     
+    // Variable to store the selected answer
+    private var selectedAnswer: QuizModel.Answer? = nil
+    
     // Variables to know if an answer has been selected and reached the end of quiz
     @Published var answerSelected = false
     @Published private(set) var reachedEnd = false
@@ -239,16 +242,23 @@ class QuizManager: ObservableObject {
     // Function to know that user selected an answer, and update the score
     func selectAnswer(answer: QuizModel.Answer) {
         answerSelected = true
+        selectedAnswer = answer
         
         // Debug: Print the selected answer
         print("Selected answer: \(answer.text), OutcomeType: \(answer.outcomeType), OutcomeIndex: \(answer.outcomeIndex)")
-        
-        // Record the selected answer in the quiz model
-        quizModel.recordAnswer(answer)
     }
     
     // Function to move to the next question or end the game
     func goToNextQuestion() {
+        guard let answer = selectedAnswer else {
+            // Ensure an answer was selected before proceeding
+            print("No answer selected!")
+            return
+        }
+        
+        // Record the selected answer into the quiz model
+        quizModel.recordAnswer(answer)
+        
         if index + 1 < quizModel.questions.count {
             index += 1
             setQuestion()
@@ -256,6 +266,10 @@ class QuizManager: ObservableObject {
             reachedEnd = true
             calculateFinalResult()
         }
+        
+        // Reset the selection state
+        selectedAnswer = nil
+        answerSelected = false
     }
     
     // Function to calculate the final result
